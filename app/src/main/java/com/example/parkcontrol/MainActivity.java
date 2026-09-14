@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Redirección temporal a ParkedVehicleActivity
+        // Redirección temporal al activity de cada uno
         Intent intent = new Intent(this, ParkedVehicleActivity.class);
         startActivity(intent);
         finish();
