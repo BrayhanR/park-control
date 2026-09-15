@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F7F8FA"
+    tools:context=".SpacesAvailabilityActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Barra superior -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="#082E5C">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="‹"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Disponibilidad de espacios"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="1dp" />
+
+        </LinearLayout>
+
+        <!-- Contenido -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <!-- Resumen -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="#DFF3E3">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Disponibles"
+                        android:textColor="#48875A"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="12"
+                        android:textColor="#263238"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="#EEEEEE">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ocupados"
+                        android:textColor="#616161"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="28"
+                        android:textColor="#263238"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="#F1F3F5">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total"
+                        android:textColor="#616161"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="40"
+                        android:textColor="#263238"
+                        android:textSize="27sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Piso -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="22dp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="PISO 1                                      ▼"
+                android:textColor="#263238"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="#FFFFFF" />
+
+            <!-- Cuadrícula -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="4"
+                android:rowCount="3">
+
+                <TextView
+                    android:id="@+id/slot01"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="01"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:id="@+id/slot02"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="02"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="03&#10;Ocupado"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="#D1D1D1" />
+
+                <TextView
+                    android:id="@+id/slot04"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="04"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:id="@+id/slot05"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="05"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:id="@+id/slot06"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="06"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:id="@+id/slot07"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="07"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="08&#10;Ocupado"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="#D1D1D1" />
+
+                <TextView
+                    android:id="@+id/slot09"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="09"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="10&#10;Ocupado"
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="#D1D1D1" />
+
+                <TextView
+                    android:id="@+id/slot11"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="11"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:id="@+id/slot12"
+                    android:layout_width="0dp"
+                    android:layout_height="72dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:text="12"
+                    android:textColor="#246B35"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="#BDE8C4" />
+
+            </GridLayout>
+
+            <!-- Leyenda -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="#BDE8C4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="Disponible"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="30dp"
+                    android:background="#D1D1D1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:text="Ocupado"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Selecciona un espacio disponible para registrar el ingreso"
+                android:textColor="#757575"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
