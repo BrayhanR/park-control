@@ -1,27 +1,31 @@
 package com.example.parkcontrol;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.provider.MediaStore;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
 
 public class RegistroVehiculoActivity extends AppCompatActivity {
 
     private EditText txtPlaca;
     private EditText txtMarca;
     private EditText txtColor;
-    private ImageView imgPlaca; // <-- 1. Declaración
 
     private Spinner spinnerTipo;
 
@@ -31,13 +35,9 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
 
     private DatabaseHelper databaseHelper;
 
-    private ActivityResultLauncher<String> permisoCamaraLauncher;
-    private ActivityResultLauncher<Void> camaraLauncher;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         permisoCamaraLauncher = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 permitido -> {
@@ -52,20 +52,19 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
                     }
                 }
         );
-
         camaraLauncher = registerForActivityResult(
                 new ActivityResultContracts.TakePicturePreview(),
                 imagen -> {
                     if (imagen != null) {
-                        // <-- 3. Asignar imagen y hacer visible el ImageView
-                        imgPlaca.setImageBitmap(imagen);
-                        imgPlaca.setVisibility(View.VISIBLE);
 
                         Toast.makeText(
                                 this,
                                 "Fotografía capturada correctamente",
                                 Toast.LENGTH_SHORT
                         ).show();
+
+                        // Posteriormente utilizaremos esta imagen
+                        // para reconocer la placa.
                     }
                 }
         );
@@ -77,7 +76,6 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
         txtPlaca = findViewById(R.id.txtPlaca);
         txtMarca = findViewById(R.id.txtMarca);
         txtColor = findViewById(R.id.txtColor);
-        imgPlaca = findViewById(R.id.imgPlaca); // <-- 2. Referencia findViewById
 
         spinnerTipo = findViewById(R.id.spinnerTipo);
 
@@ -107,16 +105,25 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
         spinnerTipo.setAdapter(adapter);
 
         // Regresar
-        btnRegresar.setOnClickListener(v -> finish());
+        btnRegresar.setOnClickListener(v -> {
+            finish();
+        });
 
         // Cámara
-        btnCamara.setOnClickListener(v -> abrirCamara());
+        btnCamara.setOnClickListener(v -> {
+            abrirCamara();
+        });
 
         // Guardar
-        btnGuardar.setOnClickListener(v -> guardarVehiculo());
+        btnGuardar.setOnClickListener(v -> {
+
+            guardarVehiculo();
+
+        });
     }
 
     private void abrirCamara() {
+
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.CAMERA
@@ -132,41 +139,54 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
         }
     }
 
+    private ActivityResultLauncher<String> permisoCamaraLauncher;
+
+    private ActivityResultLauncher<Void> camaraLauncher;
+
     private void guardarVehiculo() {
 
         String placa = txtPlaca.getText().toString().trim();
         String marca = txtMarca.getText().toString().trim();
         String color = txtColor.getText().toString().trim();
+
         String tipo = spinnerTipo.getSelectedItem().toString();
 
         // Validar placa
         if (placa.isEmpty()) {
+
             txtPlaca.setError("Ingrese la placa");
             txtPlaca.requestFocus();
+
             return;
         }
 
         // Validar tipo
         if (tipo.equals("Seleccione el tipo")) {
+
             Toast.makeText(
                     this,
                     "Seleccione el tipo de vehículo",
                     Toast.LENGTH_SHORT
             ).show();
+
             return;
         }
 
         // Validar marca
         if (marca.isEmpty()) {
+
             txtMarca.setError("Ingrese la marca");
             txtMarca.requestFocus();
+
             return;
         }
 
         // Validar color
         if (color.isEmpty()) {
+
             txtColor.setError("Ingrese el color");
             txtColor.requestFocus();
+
             return;
         }
 
@@ -183,18 +203,25 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
         );
 
         if (resultado != -1) {
+
             Toast.makeText(
                     this,
                     "Vehículo registrado correctamente",
                     Toast.LENGTH_LONG
             ).show();
+
             finish();
+
         } else {
+
             Toast.makeText(
                     this,
                     "No fue posible registrar el vehículo",
                     Toast.LENGTH_LONG
             ).show();
         }
+
+
+        finish();
     }
 }
