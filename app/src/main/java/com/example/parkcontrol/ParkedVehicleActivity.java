@@ -36,5 +36,5 @@ public class ParkedVehicleActivity extends AppCompatActivity {
         android.util.Log.d("BD_TEST", "ID del usuario registrado: " + idInsertado);
     }
 
-    // Comentario de prueba
+    // Comentario de prueba 2
 }
