@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkControl">
         <activity
-            android:name=".mainmenuactivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
