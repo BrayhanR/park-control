@@ -35,4 +35,6 @@ public class ParkedVehicleActivity extends AppCompatActivity {
         long idInsertado = db.insert("User", null, values);
         android.util.Log.d("BD_TEST", "ID del usuario registrado: " + idInsertado);
     }
+
+    // Comentario de prueba
 }
