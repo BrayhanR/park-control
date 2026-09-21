@@ -1,5 +1,7 @@
 package com.example.parkcontrol;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +23,16 @@ public class ParkedVehicleActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Cambios de prueba
+        // Prueba de base de datos
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("name", "Brayhan Rodriguez");
+        values.put("email", "brayhan@test.com");
+        values.put("password", "123456");
+
+        long idInsertado = db.insert("User", null, values);
+        android.util.Log.d("BD_TEST", "ID del usuario registrado: " + idInsertado);
     }
 }
