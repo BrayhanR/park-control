@@ -1,6 +1,8 @@
 package com.example.parkcontrol;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,11 @@ public class RegisterExitActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button confirmButton = findViewById(R.id.confirm_button);
+        confirmButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Salida registrada (Simulación)", Toast.LENGTH_SHORT).show();
+        });
+
     }
 }

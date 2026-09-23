@@ -44,7 +44,7 @@
         android:text="Información actual"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"

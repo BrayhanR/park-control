@@ -44,7 +44,7 @@
         android:text="Resumen del parqueo"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -330,15 +330,14 @@
         android:id="@+id/confirm_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CONFIRMAR SALIDA"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="12dp"
+        android:text="CONFIRMAR SALIDA"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:backgroundTint="#28A745"
         app:cornerRadius="10dp"
-        app:layout_constraintTop_toBottomOf="@id/card_parking_summary"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_parking_summary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
