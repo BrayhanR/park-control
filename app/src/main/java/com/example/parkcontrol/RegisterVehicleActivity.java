@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.provider.MediaStore;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -21,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 
-public class RegistroVehiculoActivity extends AppCompatActivity {
+public class RegisterVehicleActivity extends AppCompatActivity {
 
     private EditText txtPlaca;
     private EditText txtMarca;

@@ -29,7 +29,7 @@
 
         <!-- Views de Andrés -->
         <activity android:name=".MainMenuActivity" android:exported="false" />
-        <activity android:name=".RegistroVehiculoActivity" android:exported="false" />
+        <activity android:name=".RegisterVehicleActivity" android:exported="false" />
 
         <!-- Views de Albert -->
         <activity android:name=".RegisterEntryActivity" android:exported="false" />

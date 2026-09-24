@@ -34,7 +34,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
             Intent intent = new Intent(
                     MainMenuActivity.this,
-                    RegistroVehiculoActivity.class
+                    RegisterVehicleActivity.class
             );
 
             startActivity(intent);
