@@ -30,6 +30,8 @@
             android:name=".RegistroVehiculoActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".MainMenuActivity" android:exported="false" />
     </application>
 
 </manifest>

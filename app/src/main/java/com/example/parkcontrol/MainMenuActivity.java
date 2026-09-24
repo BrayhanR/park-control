@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class mainmenuactivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity {
 
     private Button btnVehiculos;
     private Button btnDisponibilidad;
@@ -33,7 +33,7 @@ public class mainmenuactivity extends AppCompatActivity {
         btnVehiculos.setOnClickListener(v -> {
 
             Intent intent = new Intent(
-                    mainmenuactivity.this,
+                    MainMenuActivity.this,
                     RegistroVehiculoActivity.class
             );
 

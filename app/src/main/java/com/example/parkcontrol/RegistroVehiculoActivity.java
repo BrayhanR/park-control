@@ -194,32 +194,32 @@ public class RegistroVehiculoActivity extends AppCompatActivity {
         int userId = 1;
 
         // Insertar vehículo en SQLite
-        long resultado = databaseHelper.insertarVehiculo(
-                userId,
-                placa,
-                tipo,
-                marca,
-                color
-        );
+//        long resultado = databaseHelper.insertarVehiculo(
+//                userId,
+//                placa,
+//                tipo,
+//                marca,
+//                color
+//        );
 
-        if (resultado != -1) {
-
-            Toast.makeText(
-                    this,
-                    "Vehículo registrado correctamente",
-                    Toast.LENGTH_LONG
-            ).show();
-
-            finish();
-
-        } else {
-
-            Toast.makeText(
-                    this,
-                    "No fue posible registrar el vehículo",
-                    Toast.LENGTH_LONG
-            ).show();
-        }
+//        if (resultado != -1) {
+//
+//            Toast.makeText(
+//                    this,
+//                    "Vehículo registrado correctamente",
+//                    Toast.LENGTH_LONG
+//            ).show();
+//
+//            finish();
+//
+//        } else {
+//
+//            Toast.makeText(
+//                    this,
+//                    "No fue posible registrar el vehículo",
+//                    Toast.LENGTH_LONG
+//            ).show();
+//        }
 
 
         finish();

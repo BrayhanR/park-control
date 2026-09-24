@@ -22,5 +22,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        Intent intent = new Intent (this, MainMenuActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
