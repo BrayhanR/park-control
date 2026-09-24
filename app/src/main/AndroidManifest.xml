@@ -26,12 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegistroVehiculoActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
 
+        <!-- Views de Andrés -->
         <activity android:name=".MainMenuActivity" android:exported="false" />
+        <activity android:name=".RegistroVehiculoActivity" android:exported="false" />
+
+        <!-- Views de Albert -->
+        <activity android:name=".RegisterEntryActivity" android:exported="false" />
+        <activity android:name=".SpacesAvailabilityActivity" android:exported="false" />
+
+
     </application>
 
 </manifest>

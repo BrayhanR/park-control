@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent intent = new Intent (this, MainMenuActivity.class);
+        // Redirección temporal al activity de cada uno
+        Intent intent = new Intent(this, RegisterEntryActivity.class);
         startActivity(intent);
         finish();
     }
