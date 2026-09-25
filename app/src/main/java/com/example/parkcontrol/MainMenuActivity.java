@@ -3,6 +3,7 @@ package com.example.parkcontrol;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,23 +44,39 @@ public class MainMenuActivity extends AppCompatActivity {
         // Botones que desarrollaremos posteriormente
 
         btnDisponibilidad.setOnClickListener(v -> {
-            // Próximamente
+
+            Intent intent = new Intent(
+                    MainMenuActivity.this,
+                    SpacesAvailabilityActivity.class
+            );
+
+            startActivity(intent);
         });
 
         btnIngreso.setOnClickListener(v -> {
-            // Próximamente
+            Intent intent = new Intent(
+                    MainMenuActivity.this,
+                    RegisterEntryActivity.class
+            );
+
+            startActivity(intent);
         });
 
         btnParqueos.setOnClickListener(v -> {
-            // Próximamente
+            Intent intent = new Intent(
+                    MainMenuActivity.this,
+                    ParkedVehicleActivity.class
+            );
+
+            startActivity(intent);
         });
 
         btnHistorial.setOnClickListener(v -> {
-            // Próximamente
+            Toast.makeText(this, "Proximamente se registrará esta Activity", Toast.LENGTH_SHORT).show();
         });
 
         btnPerfil.setOnClickListener(v -> {
-            // Próximamente
+            Toast.makeText(this, "Proximamente se registrará esta Activity", Toast.LENGTH_SHORT).show();
         });
     }
 }

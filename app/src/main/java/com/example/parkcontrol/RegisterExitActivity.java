@@ -1,5 +1,6 @@
 package com.example.parkcontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,9 +24,14 @@ public class RegisterExitActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Botón para confirmar salida
         Button confirmButton = findViewById(R.id.confirm_button);
         confirmButton.setOnClickListener(v -> {
             Toast.makeText(this, "Salida registrada (Simulación)", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }

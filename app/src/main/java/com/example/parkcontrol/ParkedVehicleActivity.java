@@ -1,8 +1,10 @@
 package com.example.parkcontrol;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +25,33 @@ public class ParkedVehicleActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Botón para cambiar al activity de SpacesAvailabilityActivity
+        TextView btnLocation = findViewById(R.id.location_button);
+
+        btnLocation.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    ParkedVehicleActivity.this,
+                    SpacesAvailabilityActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+        // Botón para cambiar al activity de RegisterExitActivity
+        TextView btnExitView = findViewById(R.id.exit_view_button);
+
+        btnExitView.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    ParkedVehicleActivity.this,
+                    RegisterExitActivity.class
+            );
+
+            startActivity(intent);
+        });
+
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
     }
 }

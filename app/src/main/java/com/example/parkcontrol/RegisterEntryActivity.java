@@ -1,7 +1,10 @@
 package com.example.parkcontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,5 +53,17 @@ public class RegisterEntryActivity extends AppCompatActivity {
                     "Piso 1 - Espacio " + espacioSeleccionado
             );
         }
+
+        // Botón registrar y guardar ingreso
+
+        Button registerEntry = findViewById(R.id.btnRegisterEntry);
+        registerEntry.setOnClickListener(v -> {
+            Toast.makeText(this, "Ingreso registrado (Simulación)", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 }

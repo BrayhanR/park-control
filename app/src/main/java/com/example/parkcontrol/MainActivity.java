@@ -1,6 +1,8 @@
 package com.example.parkcontrol;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -22,9 +24,23 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Creación de base de datos
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+
+        // Usuario de prueba para la tabla user
+        ContentValues values = new ContentValues();
+        values.put("user_id", 1);
+        values.put("name", "Usuario Prueba");
+        values.put("email", "prueba@parkcontrol.com");
+        values.put("password", "123456");
+
+        db.insert("User", null, values);
+
         // Redirección temporal al activity de cada uno
-            Intent intent = new Intent(this, RegisterExitActivity.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
         finish();
+
     }
 }

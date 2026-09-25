@@ -69,6 +69,7 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:backgroundTint="#0D1B3D"
+                android:textColor="@color/white"
                 android:text="Agregar foto"
                 android:textSize="20sp" />
 
@@ -84,6 +85,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:background="#FFFFFF"
+            android:textColorHint="#999999"
+            android:textColor="@color/black"
             android:hint="Placa del vehículo"
             android:inputType="textCapCharacters"
             android:padding="15dp" />
@@ -95,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="20dp"
+
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp" />
 
@@ -108,6 +112,8 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:background="#FFFFFF"
+            android:textColorHint="#999999"
+            android:textColor="@color/black"
             android:hint="Marca"
             android:inputType="textCapSentences"
             android:padding="15dp" />
@@ -122,6 +128,8 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:background="#FFFFFF"
+            android:textColorHint="#999999"
+            android:textColor="@color/black"
             android:hint="Color"
             android:inputType="textCapSentences"
             android:padding="15dp" />

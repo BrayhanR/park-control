@@ -2,6 +2,8 @@ package com.example.parkcontrol;
 
 
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,7 +34,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     private Button btnCamara;
     private Button btnRegresar;
 
-    private DatabaseHelper databaseHelper;
+    private DatabaseHelper DatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(
                                 this,
-                                "Se necesita permiso para utilizar la cámara",
+                                "Se necesita permiso para utilizar la cámara (Simulación)",
                                 Toast.LENGTH_LONG
                         ).show();
                     }
@@ -69,7 +71,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.registervehicleactivity);
-        databaseHelper = new DatabaseHelper(this);
+        DatabaseHelper = new DatabaseHelper(this);
 
         // Referencias
         txtPlaca = findViewById(R.id.txtPlaca);
@@ -192,33 +194,36 @@ public class RegisterVehicleActivity extends AppCompatActivity {
         // Usuario de prueba
         int userId = 1;
 
-        // Insertar vehículo en SQLite
-//        long resultado = databaseHelper.insertarVehiculo(
-//                userId,
-//                placa,
-//                tipo,
-//                marca,
-//                color
-//        );
+        // Insertar vehículo en SQLite (Parametros ajustados para hacer la inserción directamente)
+        SQLiteDatabase db = DatabaseHelper.getWritableDatabase();
 
-//        if (resultado != -1) {
-//
-//            Toast.makeText(
-//                    this,
-//                    "Vehículo registrado correctamente",
-//                    Toast.LENGTH_LONG
-//            ).show();
-//
-//            finish();
-//
-//        } else {
-//
-//            Toast.makeText(
-//                    this,
-//                    "No fue posible registrar el vehículo",
-//                    Toast.LENGTH_LONG
-//            ).show();
-//        }
+        ContentValues values = new ContentValues();
+        values.put("user_id", userId);
+        values.put("license_plate", placa);
+        values.put("vehicle_type", tipo);
+        values.put("brand", marca);
+        values.put("color", color);
+
+        long resultado = db.insert("Vehicle", null, values);
+
+        if (resultado != -1) {
+
+            Toast.makeText(
+                    this,
+                    "Vehículo registrado correctamente",
+                    Toast.LENGTH_LONG
+            ).show();
+
+            finish();
+
+        } else {
+
+            Toast.makeText(
+                    this,
+                    "No fue posible registrar el vehículo",
+                    Toast.LENGTH_LONG
+            ).show();
+        }
 
 
         finish();
