@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,20 +27,31 @@ public class ParkedVehicleActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Botón para cambiar al activity de SpacesAvailabilityActivity
-        TextView btnLocation = findViewById(R.id.location_button);
+            // Cambiar TextView por Button
+            Button btnLocation = findViewById(R.id.location_button);
 
-        btnLocation.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    ParkedVehicleActivity.this,
-                    SpacesAvailabilityActivity.class
-            );
+            btnLocation.setOnClickListener(v -> {
+                Toast.makeText(this, "Ubicación en GPS (Simulación)", Toast.LENGTH_SHORT).show();
 
-            startActivity(intent);
-        });
+                // Opción A: Abrir el mapa usando una ubicación o coordenadas específicas
+                String geoUri = "geo:0,0?q=Parqueadero";
+
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
+
+                // Opcional: Especificar el paquete para forzar que abra en Google Maps si está disponible
+                mapIntent.setPackage("com.google.android.apps.maps");
+
+                // Verificar si hay alguna app de mapas instalada antes de lanzar el Intent
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                } else { // Si no tiene Google Maps instalado, se abre en cualquier app de navegación disponible
+                    Intent fallbackIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
+                    startActivity(fallbackIntent);
+                }
+            });
 
         // Botón para cambiar al activity de RegisterExitActivity
-        TextView btnExitView = findViewById(R.id.exit_view_button);
+        Button btnExitView = findViewById(R.id.exit_view_button);
 
         btnExitView.setOnClickListener(v -> {
             Intent intent = new Intent(
