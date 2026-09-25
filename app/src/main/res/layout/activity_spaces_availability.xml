@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#F7F8FA"
+    android:background="@color/white"
     tools:context=".SpacesAvailabilityActivity">
 
     <LinearLayout
@@ -66,7 +66,7 @@
                     android:layout_marginEnd="6dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="#DFF3E3">
+                    android:background="@color/green_info">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                     android:layout_marginEnd="3dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="#EEEEEE">
+                    android:background="@color/grey_info">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                     android:layout_marginStart="6dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="#F1F3F5">
+                    android:background="@color/grey_info">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -152,10 +152,10 @@
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
                 android:text="PISO 1                                      ▼"
-                android:textColor="#263238"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:background="#FFFFFF" />
+                android:background="@color/white" />
 
             <!-- Cuadrícula -->
             <GridLayout
@@ -173,10 +173,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="01"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:id="@+id/slot02"
@@ -186,10 +186,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="02"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -198,10 +198,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="03&#10;Ocupado"
-                    android:textColor="#555555"
+                    android:textColor="@color/grey_selection_text"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:background="#D1D1D1" />
+                    android:background="@color/grey_selection" />
 
                 <TextView
                     android:id="@+id/slot04"
@@ -211,10 +211,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="04"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:id="@+id/slot05"
@@ -224,10 +224,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="05"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:id="@+id/slot06"
@@ -237,10 +237,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="06"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:id="@+id/slot07"
@@ -250,10 +250,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="07"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -262,10 +262,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="08&#10;Ocupado"
-                    android:textColor="#555555"
+                    android:textColor="@color/grey_selection_text"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:background="#D1D1D1" />
+                    android:background="@color/grey_selection" />
 
                 <TextView
                     android:id="@+id/slot09"
@@ -275,10 +275,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="09"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -287,10 +287,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="10&#10;Ocupado"
-                    android:textColor="#555555"
+                    android:textColor="@color/grey_selection_text"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:background="#D1D1D1" />
+                    android:background="@color/grey_selection" />
 
                 <TextView
                     android:id="@+id/slot11"
@@ -300,10 +300,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="11"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:id="@+id/slot12"
@@ -313,10 +313,10 @@
                     android:layout_margin="4dp"
                     android:gravity="center"
                     android:text="12"
-                    android:textColor="#246B35"
+                    android:textColor="@color/green_selection_text"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
             </GridLayout>
 
@@ -331,42 +331,42 @@
                 <View
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:background="#BDE8C4" />
+                    android:background="@color/green_selection" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:text="Disponible"
-                    android:textColor="#424242"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <View
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_marginStart="30dp"
-                    android:background="#D1D1D1" />
+                    android:background="@color/grey_selection" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:text="Ocupado"
-                    android:textColor="#424242"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:text="Selecciona un espacio disponible para registrar el ingreso"
-                android:textColor="#757575"
-                android:textSize="13sp" />
-
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Selecciona un espacio disponible para registrar el ingreso"
+            android:textColor="@color/grey_text"
+            android:textSize="13sp" />
 
     </LinearLayout>
 

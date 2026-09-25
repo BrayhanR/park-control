@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#0D1B3D"
+            android:background="@color/primary_blue"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="20dp"
@@ -25,9 +25,9 @@
                 android:id="@+id/btnRegresar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:backgroundTint="#0D1B3D"
+                android:backgroundTint="@color/primary_blue"
                 android:text="←"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="25sp" />
 
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Registrar vehículo"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
                 android:id="@+id/btnCamara"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
-                android:backgroundTint="#0D1B3D"
+                android:backgroundTint="@color/primary_blue"
                 android:textColor="@color/white"
                 android:text="Agregar foto"
                 android:textSize="20sp" />
@@ -84,8 +84,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:background="#FFFFFF"
-            android:textColorHint="#999999"
+            android:background="@color/white"
+            android:textColorHint="@color/clear_grey"
             android:textColor="@color/black"
             android:hint="Placa del vehículo"
             android:inputType="textCapCharacters"
@@ -98,7 +98,6 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="20dp"
-
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp" />
 
@@ -111,8 +110,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
-            android:background="#FFFFFF"
-            android:textColorHint="#999999"
+            android:background="@color/white"
+            android:textColorHint="@color/clear_grey"
             android:textColor="@color/black"
             android:hint="Marca"
             android:inputType="textCapSentences"
@@ -127,8 +126,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
-            android:background="#FFFFFF"
-            android:textColorHint="#999999"
+            android:background="@color/white"
+            android:textColorHint="@color/clear_grey"
             android:textColor="@color/black"
             android:hint="Color"
             android:inputType="textCapSentences"
@@ -141,9 +140,9 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="20dp"
-            android:backgroundTint="#0D1B3D"
+            android:backgroundTint="@color/primary_blue"
             android:text="GUARDAR VEHÍCULO"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <!-- TÍTULO Y TABLA DE VEHÍCULOS -->
@@ -155,7 +154,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:text="Vehículos Registrados"
-            android:textColor="#0D1B3D"
+            android:textColor="@color/primary_blue"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -172,7 +171,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#0D1B3D"
+                android:background="@color/primary_blue"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -181,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
                     android:text="ID"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -190,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="Placa"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -199,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="Tipo"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -208,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
                     android:text="Marca"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -217,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Color"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -227,7 +226,7 @@
                 android:id="@+id/rvVehiculos"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#FFFFFF"
+                android:background="@color/white"
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>

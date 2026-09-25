@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterExitActivity"
-    android:background="#F7F8FA">
+    android:background="@color/white">
 
     <!-- Banner -->
     <TextView
         android:id="@+id/parked_vehicle_header"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:background="#0D1B3D"
+        android:background="@color/primary_blue"
         android:gravity="center"
         android:text="Registrar salida"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:contentDescription="Volver"
         android:padding="12dp"
         android:src="@drawable/baseline_arrow_back_ios_24"
-        app:tint="#FFFFFF"
+        app:tint="@color/white"
         android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@id/parked_vehicle_header"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sumary_info">
@@ -168,7 +168,7 @@
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_vehicle">
@@ -315,7 +315,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$ 8.000"
-                android:textColor="#28A745"
+                android:textColor="@color/green_success"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_payment"
@@ -332,12 +332,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:text="CONFIRMAR SALIDA"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:backgroundTint="#28A745"
+        app:backgroundTint="@color/green_success"
         app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_parking_summary" />

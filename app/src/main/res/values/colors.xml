@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#000000</color>
-    <color name="teal_700">#018786</color>
-    <color name="purple_500">#6200EE</color>
+    <color name="primary_blue">#0D1B3D</color>
+    <color name="accent_yellow">#F5B400</color>
+    <color name="green_success">#28A745</color>
+    <color name="green_info">#DFF3E3</color>
+    <color name="green_selection_text">#246B35</color>
+    <color name="green_selection">#BDE8C4</color>
     <color name="white">#FFFFFF</color>
-    <color name="blue_500">#2196F3</color> <!-- Azul Material Design -->
-
+    <color name="grey_info">#EEEEEE</color>
+    <color name="grey_text">#6C757D</color>
+    <color name="grey_selection">#D1D1D1</color>
+    <color name="grey_selection_text">#555555</color>
+    <color name="clear_grey">#B4B3B5</color>
 </resources>
