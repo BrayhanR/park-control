@@ -73,6 +73,18 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
         });
+
+        // Botón temporal (Borrar despues)
+        TextView btnTemporal = findViewById(R.id.temporalBtn);
+
+        btnTemporal.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    LoginActivity.this,
+                    MainMenuActivity.class
+            );
+
+            startActivity(intent);
+        });
     }
 }
 
