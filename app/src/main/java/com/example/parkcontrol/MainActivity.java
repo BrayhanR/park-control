@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Redirección temporal al activity de cada uno
-        Intent intent = new Intent(this, RegisterUserActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
