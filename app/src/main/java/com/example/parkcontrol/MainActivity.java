@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
         // Usuario de prueba para la tabla user
+        // Se crea automaticamente para hacer la prueba de la activity "LoginActivity" y "RegisterVehicleActivity"
         ContentValues values = new ContentValues();
         values.put("user_id", 1);
         values.put("name", "Usuario Prueba");
@@ -38,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
         db.insert("User", null, values);
 
         // Redirección temporal al activity de cada uno
-        Intent intent = new Intent(this, MainMenuActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
-
     }
 }

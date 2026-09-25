@@ -34,6 +34,10 @@
         <activity android:name=".ParkedVehicleActivity" android:exported="false" />
         <activity android:name=".RegisterExitActivity" android:exported="false" />
 
+        <!-- Views Emmanuel -->
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".RegisterUserActivity" android:exported="false" />
+        <activity android:name=".ForgotPasswordActivity" android:exported="false" />
 
     </application>
 
