@@ -1,5 +1,6 @@
 package com.example.parkcontrol;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
     private Button buttonRecover;
-//    private DBHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.editTextEmail);
         buttonRecover = findViewById(R.id.buttonRecover);
-//        dbHelper = new DBHelper(this);
+        dbHelper = new DatabaseHelper(this);
 
         buttonRecover.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
@@ -31,17 +32,22 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-//            Cursor cursor = dbHelper.getReadableDatabase()
-//                    .rawQuery("SELECT * FROM User WHERE email = ?", new String[]{email});
+            Cursor cursor = dbHelper.getReadableDatabase()
+                    .rawQuery("SELECT * FROM User WHERE email = ?", new String[]{email});
 
-//            if (cursor.moveToFirst()) {
-//                // Aquí podrías integrar envío de correo real con Firebase/Auth o tu servidor
-//                Toast.makeText(ForgotPasswordActivity.this, "Se enviaron instrucciones a tu correo", Toast.LENGTH_LONG).show();
-//            } else {
-//                Toast.makeText(ForgotPasswordActivity.this, "Correo no registrado", Toast.LENGTH_SHORT).show();
-//            }
+            if (cursor.moveToFirst()) {
+                // Aquí podrías integrar envío de correo real con Firebase/Auth o tu servidor
+                Toast.makeText(ForgotPasswordActivity.this, "Se enviaron instrucciones a tu correo (Simulación)", Toast.LENGTH_LONG).show();
 
-//            cursor.close();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+
+            } else {
+                Toast.makeText(ForgotPasswordActivity.this, "Correo no registrado", Toast.LENGTH_SHORT).show();
+            }
+
+            cursor.close();
         });
     }
 }

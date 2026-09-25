@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:background="@color/white">
 
     <!-- Logo -->
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/estacionamiento"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,27 +25,28 @@
         android:text="Crear cuenta"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="#6C757D"
         app:layout_constraintTop_toBottomOf="@id/appLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
     <!-- Nombre -->
+
+    <!-- Correo -->
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edittext_background"
         android:hint="Nombre completo"
         android:inputType="textPersonName"
-        android:background="@drawable/edittext_background"
-        app:layout_constraintTop_toBottomOf="@id/registerTitle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerTitle" />
 
-    <!-- Correo -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
@@ -105,20 +106,21 @@
         android:layout_marginTop="12dp"/>
 
     <!-- Botón Registrar -->
+
+    <!-- Enlace a login -->
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="REGISTRARME"
-        android:backgroundTint="@color/blue_500"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/editTextPhone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0D1B3D"
+        android:text="REGISTRARME"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextPhone" />
 
-    <!-- Enlace a login -->
     <TextView
         android:id="@+id/textLoginLink"
         android:layout_width="wrap_content"

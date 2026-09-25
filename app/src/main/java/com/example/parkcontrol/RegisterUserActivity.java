@@ -36,7 +36,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         textLoginLink = findViewById(R.id.textLoginLink);
 
         // Inicializar base de datos
-//        dbHelper = new DBHelper(this);
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
 
         // Acción de registro
         buttonRegister.setOnClickListener(v -> {
@@ -56,20 +56,20 @@ public class RegisterUserActivity extends AppCompatActivity {
                 return;
             }
 
-//            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("name", name);
             values.put("email", email);
             values.put("password", password);
-            // Teléfono opcional: puedes guardarlo en otra tabla si lo requieres
+            // Teléfono opcional, se puede guardar en otro campo si se requiere
 
-//            long result = db.insert("User", null, values);
-//            if (result == -1L) {
-//                Toast.makeText(RegisterUserActivity.this, "Error: el correo ya existe", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(RegisterUserActivity.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
-//                finish(); // Vuelve al LoginActivity
-//            }
+            long result = db.insert("User", null, values);
+            if (result == -1L) {
+                Toast.makeText(RegisterUserActivity.this, "Error: el correo ya existe", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(RegisterUserActivity.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
+                finish(); // Vuelve al LoginActivity
+            }
         });
 
         // Enlace para volver al login

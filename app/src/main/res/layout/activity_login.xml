@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:background="@color/white">
 
     <!-- Logo superior -->
     <ImageView
         android:id="@+id/appLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:src="@drawable/estacionamiento"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recuérdame"
-        android:textColor="@android:color/white"
+        android:textColor="#B4B3B5"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="32dp"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿Olvidaste tu contraseña?"
-        android:textColor="@android:color/white"
+        android:textColor="#B4B3B5"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@id/checkRememberMe"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,26 +84,29 @@
         android:layout_marginTop="8dp"/>
 
     <!-- Botón Iniciar sesión -->
+
+    <!-- Enlace de registro -->
+
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="INICIAR SESIÓN"
-        android:backgroundTint="@color/blue_500"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/textForgotPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0D1B3D"
+        android:text="INICIAR SESIÓN"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textForgotPassword" />
 
-    <!-- Enlace de registro -->
     <TextView
         android:id="@+id/textRegisterLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¿No tienes cuenta? Regístrate"
-        android:textColor="@android:color/white"
+        android:textColor="#B4B3B5"
         android:textStyle="italic"
         app:layout_constraintTop_toBottomOf="@id/buttonLogin"
         app:layout_constraintStart_toStartOf="parent"

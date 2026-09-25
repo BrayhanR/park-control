@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         checkRememberMe = findViewById(R.id.checkRememberMe);
 
         // Inicializar base de datos
-//        dbHelper = new DBHelper(this);
-//        db = dbHelper.getReadableDatabase();
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Acción de login
         buttonLogin.setOnClickListener(v -> {
