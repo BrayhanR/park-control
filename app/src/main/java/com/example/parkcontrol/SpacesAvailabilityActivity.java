@@ -19,6 +19,11 @@ public class SpacesAvailabilityActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_spaces_availability);
 
+        // Flecha para volver a Menu
+        TextView btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> finish());
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(
                     WindowInsetsCompat.Type.systemBars()

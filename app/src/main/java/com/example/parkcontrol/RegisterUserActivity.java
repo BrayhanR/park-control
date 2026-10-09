@@ -1,7 +1,8 @@
 package com.example.parkcontrol;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
+
+import android.content.Intent;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +20,6 @@ public class RegisterUserActivity extends AppCompatActivity {
     private EditText editTextPhone;
     private Button buttonRegister;
     private TextView textLoginLink;
-//    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,41 +35,14 @@ public class RegisterUserActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
         textLoginLink = findViewById(R.id.textLoginLink);
 
-        // Inicializar base de datos
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-
         // Acción de registro
         buttonRegister.setOnClickListener(v -> {
-            String name = editTextName.getText().toString();
-            String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
-            String confirmPassword = editTextConfirmPassword.getText().toString();
-            String phone = editTextPhone.getText().toString();
+        Toast.makeText(this, "Registrado correctamente (Simulación)", Toast.LENGTH_SHORT).show();
 
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(RegisterUserActivity.this, "Completa todos los campos obligatorios", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
 
-            if (!password.equals(confirmPassword)) {
-                Toast.makeText(RegisterUserActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put("name", name);
-            values.put("email", email);
-            values.put("password", password);
-            // Teléfono opcional, se puede guardar en otro campo si se requiere
-
-            long result = db.insert("User", null, values);
-            if (result == -1L) {
-                Toast.makeText(RegisterUserActivity.this, "Error: el correo ya existe", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(RegisterUserActivity.this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show();
-                finish(); // Vuelve al LoginActivity
-            }
         });
 
         // Enlace para volver al login

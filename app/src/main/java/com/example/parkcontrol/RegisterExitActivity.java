@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.widget.ImageButton; // Botón regresar
 
 public class RegisterExitActivity extends AppCompatActivity {
 
@@ -22,6 +23,14 @@ public class RegisterExitActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Boton regresar
+        ImageButton parked_vehicle_out_back_btn = findViewById(R.id.parked_vehicle_out_back_button);
+        parked_vehicle_out_back_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterExitActivity.this, ParkedVehicleActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         // Botón para confirmar salida

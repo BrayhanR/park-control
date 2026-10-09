@@ -2,8 +2,8 @@ package com.example.parkcontrol;
 
 
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,12 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.core.content.ContextCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,44 +28,12 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     private Button btnCamara;
     private Button btnRegresar;
 
-    private DatabaseHelper DatabaseHelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        permisoCamaraLauncher = registerForActivityResult(
-                new ActivityResultContracts.RequestPermission(),
-                permitido -> {
-                    if (permitido) {
-                        abrirCamara();
-                    } else {
-                        Toast.makeText(
-                                this,
-                                "Se necesita permiso para utilizar la cámara (Simulación)",
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
-                }
-        );
-        camaraLauncher = registerForActivityResult(
-                new ActivityResultContracts.TakePicturePreview(),
-                imagen -> {
-                    if (imagen != null) {
 
-                        Toast.makeText(
-                                this,
-                                "Fotografía capturada correctamente",
-                                Toast.LENGTH_SHORT
-                        ).show();
-
-                        // Posteriormente utilizaremos esta imagen
-                        // para reconocer la placa.
-                    }
-                }
-        );
 
         setContentView(R.layout.registervehicleactivity);
-        DatabaseHelper = new DatabaseHelper(this);
 
         // Referencias
         txtPlaca = findViewById(R.id.txtPlaca);
@@ -111,8 +73,13 @@ public class RegisterVehicleActivity extends AppCompatActivity {
         });
 
         // Cámara
+        // Cámara simulada para Fase 2
         btnCamara.setOnClickListener(v -> {
-            abrirCamara();
+            Toast.makeText(
+                    RegisterVehicleActivity.this,
+                    "Botón Agregar foto diseñado para futura implementación",
+                    Toast.LENGTH_SHORT
+            ).show();
         });
 
         // Guardar
@@ -120,29 +87,20 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
             guardarVehiculo();
 
+            Toast.makeText(RegisterVehicleActivity.this, "Vehivulo registado correctamente (Simulación)", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(RegisterVehicleActivity.this, MainMenuActivity.class);
+            startActivity(intent);
+            finish();
+
         });
     }
 
-    private void abrirCamara() {
 
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_GRANTED) {
 
-            camaraLauncher.launch(null);
 
-        } else {
 
-            permisoCamaraLauncher.launch(
-                    Manifest.permission.CAMERA
-            );
-        }
-    }
 
-    private ActivityResultLauncher<String> permisoCamaraLauncher;
-
-    private ActivityResultLauncher<Void> camaraLauncher;
 
     private void guardarVehiculo() {
 
@@ -190,41 +148,6 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
             return;
         }
-
-        // Usuario de prueba
-        int userId = 1;
-
-        // Insertar vehículo en SQLite (Parametros ajustados para hacer la inserción directamente)
-        SQLiteDatabase db = DatabaseHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("user_id", userId);
-        values.put("license_plate", placa);
-        values.put("vehicle_type", tipo);
-        values.put("brand", marca);
-        values.put("color", color);
-
-        long resultado = db.insert("Vehicle", null, values);
-
-        if (resultado != -1) {
-
-            Toast.makeText(
-                    this,
-                    "Vehículo registrado correctamente",
-                    Toast.LENGTH_LONG
-            ).show();
-
-            finish();
-
-        } else {
-
-            Toast.makeText(
-                    this,
-                    "No fue posible registrar el vehículo",
-                    Toast.LENGTH_LONG
-            ).show();
-        }
-
 
         finish();
     }

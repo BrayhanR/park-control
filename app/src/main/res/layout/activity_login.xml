@@ -117,21 +117,6 @@
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <!-- Botón temporal para pasar al siguiente Activity sin registro  -->
-    <Button
-        android:id="@+id/temporalBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/primary_blue"
-        android:text="SALTAR AL INICIO (Sin login)"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textRegisterLink" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

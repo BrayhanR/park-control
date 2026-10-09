@@ -24,6 +24,7 @@
             android:background="#082E5C">
 
             <TextView
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="‹"

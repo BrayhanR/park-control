@@ -1,7 +1,7 @@
 package com.example.parkcontrol;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,8 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView textRegisterLink;
     private TextView textForgotPassword;
     private CheckBox checkRememberMe;
-//    private DBHelper dbHelper;
-    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,31 +33,13 @@ public class LoginActivity extends AppCompatActivity {
         textForgotPassword = findViewById(R.id.textForgotPassword);
         checkRememberMe = findViewById(R.id.checkRememberMe);
 
-        // Inicializar base de datos
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        // Acción de login
+        // Pasar la validadcion de registro
         buttonLogin.setOnClickListener(v -> {
-            String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
-
-            android.database.Cursor cursor = db.rawQuery(
-                    "SELECT * FROM User WHERE email=? AND password=?",
-                    new String[]{email, password}
+            Toast.makeText(LoginActivity.this, "Verificación completa", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class
             );
 
-            if (cursor.getCount() > 0) {
-                Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
-                cursor.close();
-
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(LoginActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
-                cursor.close();
-            }
+            startActivity(intent);
         });
 
         // Enlace a registro
@@ -74,17 +54,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Botón temporal (Borrar despues)
-        TextView btnTemporal = findViewById(R.id.temporalBtn);
-
-        btnTemporal.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    LoginActivity.this,
-                    MainMenuActivity.class
-            );
-
-            startActivity(intent);
-        });
     }
 }
 

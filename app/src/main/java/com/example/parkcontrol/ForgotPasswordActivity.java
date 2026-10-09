@@ -13,7 +13,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
     private Button buttonRecover;
-    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         editTextEmail = findViewById(R.id.editTextEmail);
         buttonRecover = findViewById(R.id.buttonRecover);
-        dbHelper = new DatabaseHelper(this);
 
         buttonRecover.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
@@ -32,22 +30,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            Cursor cursor = dbHelper.getReadableDatabase()
-                    .rawQuery("SELECT * FROM User WHERE email = ?", new String[]{email});
+            // Como pasó la validación anterior, el correo contiene texto
+            Toast.makeText(ForgotPasswordActivity.this, "Se enviaron instrucciones a tu correo (Simulación)", Toast.LENGTH_LONG).show();
 
-            if (cursor.moveToFirst()) {
-                // Aquí podrías integrar envío de correo real con Firebase/Auth o tu servidor
-                Toast.makeText(ForgotPasswordActivity.this, "Se enviaron instrucciones a tu correo (Simulación)", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
 
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-
-            } else {
-                Toast.makeText(ForgotPasswordActivity.this, "Correo no registrado", Toast.LENGTH_SHORT).show();
-            }
-
-            cursor.close();
         });
     }
 }
