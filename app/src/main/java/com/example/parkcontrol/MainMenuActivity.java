@@ -72,11 +72,13 @@ public class MainMenuActivity extends AppCompatActivity {
         });
 
         btnHistorial.setOnClickListener(v -> {
-            Toast.makeText(this, "Proximamente se registrará esta Activity", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainMenuActivity.this, VehicleHistoryActivity.class);
+            startActivity(intent);
         });
 
         btnPerfil.setOnClickListener(v -> {
-            Toast.makeText(this, "Proximamente se registrará esta Activity", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainMenuActivity.this, MyProfileActivity.class);
+            startActivity(intent);
         });
     }
 }

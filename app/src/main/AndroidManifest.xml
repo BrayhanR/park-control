@@ -23,22 +23,49 @@
         </activity>
 
         <!-- Views de Andrés -->
-        <activity android:name=".MainMenuActivity" android:exported="false" />
-        <activity android:name=".RegisterVehicleActivity" android:exported="false" />
+        <activity
+            android:name=".MainMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterVehicleActivity"
+            android:exported="false" />
 
         <!-- Views de Albert -->
-        <activity android:name=".RegisterEntryActivity" android:exported="false" />
-        <activity android:name=".SpacesAvailabilityActivity" android:exported="false" />
+        <activity
+            android:name=".RegisterEntryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpacesAvailabilityActivity"
+            android:exported="false" />
 
         <!-- Views de Brayhan -->
-        <activity android:name=".ParkedVehicleActivity" android:exported="false" />
-        <activity android:name=".RegisterExitActivity" android:exported="false" />
+        <activity
+            android:name=".ParkedVehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterExitActivity"
+            android:exported="false" />
 
         <!-- Views Emmanuel -->
-        <activity android:name=".LoginActivity" android:exported="false" />
-        <activity android:name=".RegisterUserActivity" android:exported="false" />
-        <activity android:name=".ForgotPasswordActivity" android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
 
+        <!-- Views adicionales -->
+        <activity
+            android:name=".MyProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".VehicleHistoryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
