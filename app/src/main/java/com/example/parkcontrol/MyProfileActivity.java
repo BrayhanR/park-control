@@ -3,15 +3,20 @@ package com.example.parkcontrol;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,6 +25,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class MyProfileActivity extends AppCompatActivity {
+
+    // Para cambiar la foto de perfil
+    private ActivityResultLauncher<Intent> galleryLauncher;
+    private ImageView imgProfileLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,24 @@ public class MyProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainMenuActivity.class);
             startActivity(intent);
             finish();
+        });
+
+        // Boton para cambiar foto de perfil
+        imgProfileLogo = findViewById(R.id.blank_profile_logo);
+
+        galleryLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Uri selectedImageUri = result.getData().getData();
+                        imgProfileLogo.setImageURI(selectedImageUri);
+                    }
+                }
+        );
+
+        buttonChangeProfilePic.setOnClickListener(v -> {
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            galleryLauncher.launch(galleryIntent);
         });
 
         // Botones ocultar/mostrar contraseña
