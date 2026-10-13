@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.view.View;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -19,7 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.content.ContextCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.ImageView;
 
 
 public class RegisterVehicleActivity extends AppCompatActivity {
@@ -28,6 +29,8 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     private EditText txtMarca;
     private EditText txtColor;
 
+    private ImageView imgPlaca;
+
     private Spinner spinnerTipo;
 
     private Button btnGuardar;
@@ -35,6 +38,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     private Button btnRegresar;
 
     private DatabaseHelper DatabaseHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +62,29 @@ public class RegisterVehicleActivity extends AppCompatActivity {
                 imagen -> {
                     if (imagen != null) {
 
+                        // Mostrar la fotografía en el recuadro
+                        imgPlaca.setImageBitmap(imagen);
+                        imgPlaca.setVisibility(View.VISIBLE);
+                        imgPlaca.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
                         Toast.makeText(
                                 this,
                                 "Fotografía capturada correctamente",
                                 Toast.LENGTH_SHORT
                         ).show();
 
-                        // Posteriormente utilizaremos esta imagen
-                        // para reconocer la placa.
+                    } else {
+                        Toast.makeText(
+                                this,
+                                "No se recibió ninguna fotografía",
+                                Toast.LENGTH_SHORT
+                        ).show();
                     }
                 }
         );
 
         setContentView(R.layout.registervehicleactivity);
+        imgPlaca = findViewById(R.id.imgPlaca);
         DatabaseHelper = new DatabaseHelper(this);
 
         // Referencias
@@ -82,6 +96,10 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
         btnGuardar = findViewById(R.id.btnGuardar);
         btnCamara = findViewById(R.id.btnCamara);
+        btnCamara.setOnClickListener(v -> {
+            Toast.makeText(this, "Abriendo cámara...", Toast.LENGTH_SHORT).show();
+            abrirCamara();
+        });
         btnRegresar = findViewById(R.id.btnRegresar);
 
         // Tipos de vehículos
@@ -124,7 +142,6 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     }
 
     private void abrirCamara() {
-
         if (ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.CAMERA
@@ -133,10 +150,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
             camaraLauncher.launch(null);
 
         } else {
-
-            permisoCamaraLauncher.launch(
-                    Manifest.permission.CAMERA
-            );
+            permisoCamaraLauncher.launch(Manifest.permission.CAMERA);
         }
     }
 
