@@ -14,16 +14,20 @@
         android:orientation="vertical">
 
         <!-- Barra superior -->
+
+        <!-- Contenido -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
+            android:background="@color/primary_blue"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:background="#082E5C">
+            android:paddingEnd="20dp">
 
             <TextView
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="‹"
@@ -46,7 +50,6 @@
 
         </LinearLayout>
 
-        <!-- Contenido -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

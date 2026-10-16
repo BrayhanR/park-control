@@ -47,6 +47,7 @@ public class MyProfileActivity extends AppCompatActivity {
         ImageButton btnClosed = findViewById(R.id.btn_toggle_password_closed);
         ImageButton btnOpen = findViewById(R.id.btn_toggle_password_open);
         SwitchMaterial switchNotifications = findViewById(R.id.switch_notifications);
+        Button buttonEditProfile = findViewById(R.id.edit_profile_button);
 
         // Botón regresar
         buttonGetBack.setOnClickListener(v -> {
@@ -64,6 +65,7 @@ public class MyProfileActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Uri selectedImageUri = result.getData().getData();
                         imgProfileLogo.setImageURI(selectedImageUri);
+                        Toast.makeText(this, "Foto de perfil actualizada", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -90,10 +92,15 @@ public class MyProfileActivity extends AppCompatActivity {
         switchNotifications.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 // Muestra un mensaje flotante nativo (Toast) o lanza un Intent
-                Toast.makeText(this, "Notificaciones activadas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Notificaciones de parqueo activadas (Simulación)", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Notificaciones desactivadas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Notificaciones de parqueo desactivadas (Simulación)", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // Botón editar perfil
+        buttonEditProfile.setOnClickListener(v -> {
+            Toast.makeText(this, "Se incluirá en las próximas entregas", Toast.LENGTH_SHORT).show();
         });
 
     }
