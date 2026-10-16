@@ -3,6 +3,7 @@ package com.example.parkcontrol;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,6 +23,14 @@ public class RegisterExitActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Boton regresar
+        ImageButton parked_vehicle_out_back_btn = findViewById(R.id.parked_vehicle_out_back_button);
+        parked_vehicle_out_back_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterExitActivity.this, ParkedVehicleActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         // Botón para confirmar salida

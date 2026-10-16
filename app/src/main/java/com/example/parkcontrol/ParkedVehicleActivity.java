@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,28 +28,37 @@ public class ParkedVehicleActivity extends AppCompatActivity {
             return insets;
         });
 
-            // Cambiar TextView por Button
-            Button btnLocation = findViewById(R.id.location_button);
+        // Boton regresar
+        ImageButton parked_vehicle_out_back_btn = findViewById(R.id.parked_vehicle_back_button);
+        parked_vehicle_out_back_btn.setOnClickListener(v -> {
+            Intent intent = new Intent(ParkedVehicleActivity.this, MainMenuActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
-            btnLocation.setOnClickListener(v -> {
-                Toast.makeText(this, "Ubicación en GPS (Simulación)", Toast.LENGTH_SHORT).show();
+        // Acceso a GPS
+        Button btnLocation = findViewById(R.id.location_button);
 
-                // Opción A: Abrir el mapa usando una ubicación o coordenadas específicas
-                String geoUri = "geo:0,0?q=Parqueadero";
+        btnLocation.setOnClickListener(v -> {
+            Toast.makeText(this, "Ubicación en GPS (Simulación)", Toast.LENGTH_SHORT).show();
 
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
+            // Opción A: Abrir el mapa usando una ubicación o coordenadas específicas
+            String geoUri = "geo:0,0?q=Parqueadero";
 
-                // Opcional: Especificar el paquete para forzar que abra en Google Maps si está disponible
-                mapIntent.setPackage("com.google.android.apps.maps");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
 
-                // Verificar si hay alguna app de mapas instalada antes de lanzar el Intent
-                if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                } else { // Si no tiene Google Maps instalado, se abre en cualquier app de navegación disponible
-                    Intent fallbackIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
-                    startActivity(fallbackIntent);
-                }
-            });
+            // Opcional: Especificar el paquete para forzar que abra en Google Maps si está disponible
+            mapIntent.setPackage("com.google.android.apps.maps");
+
+            // Verificar si hay alguna app de mapas instalada antes de lanzar el Intent
+            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(mapIntent);
+            } else { // Si no tiene Google Maps instalado, se abre en cualquier app de navegación disponible
+                Intent fallbackIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
+                startActivity(fallbackIntent);
+            }
+        });
+
 
         // Botón para cambiar al activity de RegisterExitActivity
         Button btnExitView = findViewById(R.id.exit_view_button);
