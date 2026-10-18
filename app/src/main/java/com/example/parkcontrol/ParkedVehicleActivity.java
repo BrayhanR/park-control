@@ -42,7 +42,7 @@ public class ParkedVehicleActivity extends AppCompatActivity {
         btnLocation.setOnClickListener(v -> {
             Toast.makeText(this, "Ubicación en GPS (Simulación)", Toast.LENGTH_SHORT).show();
 
-            // Opción A: Abrir el mapa usando una ubicación o coordenadas específicas
+            // Opcional: Abrir el mapa usando una ubicación o coordenadas específicas
             String geoUri = "geo:0,0?q=Parqueadero";
 
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(geoUri));
