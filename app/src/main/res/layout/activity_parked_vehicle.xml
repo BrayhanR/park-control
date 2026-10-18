@@ -290,8 +290,6 @@
     </androidx.cardview.widget.CardView>
 
     <!-- Botón ver ubicación-->
-
-    <!-- Botón Registrar salida-->
     <Button
         android:id="@+id/location_button"
         android:layout_width="match_parent"
@@ -307,6 +305,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_parking" />
 
+    <!-- Botón Registrar salida-->
     <Button
         android:id="@+id/exit_view_button"
         android:layout_width="match_parent"
