@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ParkControl.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2; // Incrementamos la versión para forzar la actualización
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,7 +29,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "user_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
                 "email TEXT UNIQUE NOT NULL, " +
-                "password TEXT NOT NULL);";
+                "password TEXT NOT NULL, " +
+                "profile_image_uri TEXT);";
 
         // Tabla: parkingSlot
         String CREATE_PARKING_SLOT_TABLE = "CREATE TABLE parkingSlot (" +
@@ -47,6 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "vehicle_type TEXT NOT NULL, " +
                 "brand TEXT, " +
                 "color TEXT, " +
+                "photo_uri TEXT, " +
                 "FOREIGN KEY(user_id) REFERENCES User(user_id) ON DELETE CASCADE);";
 
         // TABLA DEPENDIENTE DE NIVEL 2 (Intermedia / Transaccional)
@@ -60,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "entry_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                 "exit_timestamp DATETIME, " +
                 "total_fee REAL, " +
+                "parking_address TEXT, " +
                 "FOREIGN KEY(vehicle_id) REFERENCES Vehicle(vehicle_id), " +
                 "FOREIGN KEY(slot_id) REFERENCES parkingSlot(slot_id), " +
                 "FOREIGN KEY(user_id) REFERENCES User(user_id));";
