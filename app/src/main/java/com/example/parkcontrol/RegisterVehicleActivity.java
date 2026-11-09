@@ -21,6 +21,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.content.ContextCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.widget.ImageView;
 
 
@@ -39,6 +42,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
     private ImageButton btnRegresar;
 
     private DatabaseHelper DatabaseHelper;
+    private RecyclerView rvVehiculos;
 
 
     @Override
@@ -86,7 +90,10 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
         setContentView(R.layout.registervehicleactivity);
         imgPlaca = findViewById(R.id.imgPlaca);
+        rvVehiculos = findViewById(R.id.rvVehiculos);
+        rvVehiculos.setLayoutManager(new LinearLayoutManager(this));
         DatabaseHelper = new DatabaseHelper(this);
+        cargarVehiculos();
 
         // Referencias
         txtPlaca = findViewById(R.id.txtPlaca);
@@ -206,8 +213,19 @@ public class RegisterVehicleActivity extends AppCompatActivity {
             return;
         }
 
-        // Usuario de prueba
-        int userId = 1;
+        // Obtener el usuario que inició sesión
+        int userId = getSharedPreferences(
+                "ParkControlSession", MODE_PRIVATE
+        ).getInt("user_id", -1);
+
+        if (userId == -1) {
+            Toast.makeText(
+                    this,
+                    "Debes iniciar sesión para registrar un vehículo",
+                    Toast.LENGTH_LONG
+            ).show();
+            return;
+        }
 
         // Insertar vehículo en SQLite (Parametros ajustados para hacer la inserción directamente)
         SQLiteDatabase db = DatabaseHelper.getWritableDatabase();
@@ -243,4 +261,42 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
         finish();
     }
+
+    private void cargarVehiculos() {
+
+        int userId = getSharedPreferences(
+                "ParkControlSession", MODE_PRIVATE
+        ).getInt("user_id", -1);
+
+        java.util.List<String[]> lista = new java.util.ArrayList<>();
+
+        if (userId == -1) {
+            rvVehiculos.setAdapter(new VehiculosAdapter(lista));
+            return;
+        }
+
+        android.database.Cursor cursor =
+                DatabaseHelper.getReadableDatabase().rawQuery(
+                        "SELECT vehicle_id, license_plate, vehicle_type, brand, color " +
+                                "FROM Vehicle WHERE user_id = ? ORDER BY vehicle_id DESC",
+                        new String[]{String.valueOf(userId)}
+                );
+
+        try {
+            while (cursor.moveToNext()) {
+                lista.add(new String[]{
+                        String.valueOf(cursor.getInt(0)),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.isNull(3) ? "" : cursor.getString(3),
+                        cursor.isNull(4) ? "" : cursor.getString(4)
+                });
+            }
+        } finally {
+            cursor.close();
+        }
+
+        rvVehiculos.setAdapter(new VehiculosAdapter(lista));
+    }
+
 }

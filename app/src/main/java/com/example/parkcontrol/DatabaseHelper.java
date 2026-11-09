@@ -82,4 +82,171 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS User;");
         onCreate(db);
     }
+
+    public void inicializarEspacios() {
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.beginTransaction();
+        try {
+            for (int i = 1; i <= 12; i++) {
+                String numero = i < 10 ? "0" + i : String.valueOf(i);
+
+                db.execSQL(
+                        "INSERT INTO parkingSlot (slot_number, status) " +
+                                "SELECT ?, ? WHERE NOT EXISTS " +
+                                "(SELECT 1 FROM parkingSlot WHERE slot_number = ?)",
+                        new Object[]{numero, "disponible", numero}
+                );
+            }
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public String obtenerEstadoEspacio(String numeroEspacio) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        try (android.database.Cursor cursor = db.rawQuery(
+                "SELECT status FROM parkingSlot WHERE slot_number = ?",
+                new String[]{numeroEspacio}
+        )) {
+            if (cursor.moveToFirst()) {
+                return cursor.getString(0);
+            }
+        }
+
+        return "no_encontrado";
+    }
+
+    public int contarEspacios(String estado) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String consulta;
+        String[] parametros;
+
+        if (estado == null) {
+            consulta = "SELECT COUNT(*) FROM parkingSlot";
+            parametros = null;
+        } else {
+            consulta = "SELECT COUNT(*) FROM parkingSlot WHERE status = ?";
+            parametros = new String[]{estado};
+        }
+
+        try (android.database.Cursor cursor =
+                     db.rawQuery(consulta, parametros)) {
+
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(0);
+            }
+        }
+
+        return 0;
+    }
+
+    public android.database.Cursor obtenerVehiculosDelUsuario(int userId) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        return db.rawQuery(
+                "SELECT vehicle_id, license_plate, vehicle_type, brand, color " +
+                        "FROM Vehicle WHERE user_id = ? ORDER BY vehicle_id DESC",
+                new String[]{String.valueOf(userId)}
+        );
+    }
+
+    public boolean registrarIngreso(int vehicleId, int userId, String numeroEspacio) {
+
+        if (vehicleId <= 0 || userId <= 0 || numeroEspacio == null) {
+            return false;
+        }
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+
+        try {
+            int slotId;
+
+            // Verificar que el espacio esté disponible
+            try (android.database.Cursor cursor = db.rawQuery(
+                    "SELECT slot_id FROM parkingSlot " +
+                            "WHERE slot_number = ? AND status = ?",
+                    new String[]{numeroEspacio, "disponible"})) {
+
+                if (!cursor.moveToFirst()) {
+                    return false;
+                }
+
+                slotId = cursor.getInt(0);
+            }
+
+            // Verificar que el vehículo pertenezca al usuario
+            try (android.database.Cursor cursor = db.rawQuery(
+                    "SELECT vehicle_id FROM Vehicle " +
+                            "WHERE vehicle_id = ? AND user_id = ?",
+                    new String[]{
+                            String.valueOf(vehicleId),
+                            String.valueOf(userId)
+                    })) {
+
+                if (!cursor.moveToFirst()) {
+                    return false;
+                }
+            }
+
+            // Evitar que el mismo vehículo tenga dos ingresos activos
+            try (android.database.Cursor cursor = db.rawQuery(
+                    "SELECT record_id FROM parkingRecord " +
+                            "WHERE vehicle_id = ? AND exit_timestamp IS NULL",
+                    new String[]{String.valueOf(vehicleId)})) {
+
+                if (cursor.moveToFirst()) {
+                    return false;
+                }
+            }
+
+            // Guardar el ingreso
+            android.content.ContentValues datos =
+                    new android.content.ContentValues();
+
+            datos.put("vehicle_id", vehicleId);
+            datos.put("slot_id", slotId);
+            datos.put("user_id", userId);
+
+            long registro = db.insert("parkingRecord", null, datos);
+
+            if (registro == -1) {
+                return false;
+            }
+
+            // Marcar el espacio como ocupado
+            android.content.ContentValues estado =
+                    new android.content.ContentValues();
+
+            estado.put("status", "ocupado");
+
+            int actualizados = db.update(
+                    "parkingSlot",
+                    estado,
+                    "slot_id = ? AND status = ?",
+                    new String[]{String.valueOf(slotId), "disponible"}
+            );
+
+            if (actualizados != 1) {
+                return false;
+            }
+
+            db.setTransactionSuccessful();
+            return true;
+
+        } catch (Exception e) {
+            android.util.Log.e("DatabaseHelper",
+                    "Error al registrar ingreso", e);
+            return false;
+
+        } finally {
+            db.endTransaction();
+        }
+    }
+
 }
