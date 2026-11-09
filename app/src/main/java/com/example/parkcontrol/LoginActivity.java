@@ -50,6 +50,16 @@ public class LoginActivity extends AppCompatActivity {
             );
 
             if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                int userId = cursor.getInt(
+                        cursor.getColumnIndexOrThrow("user_id")
+                );
+
+                getSharedPreferences("ParkControlSession", MODE_PRIVATE)
+                        .edit()
+                        .putInt("user_id", userId)
+                        .apply();
                 Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
                 cursor.close();
 
