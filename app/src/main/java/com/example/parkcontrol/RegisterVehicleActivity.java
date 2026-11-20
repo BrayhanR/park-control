@@ -516,6 +516,15 @@ public class RegisterVehicleActivity extends AppCompatActivity {
         });
     }
 
+    private boolean tieneParqueoActivo(SQLiteDatabase db, int vehicleId) {
+        try (Cursor cursor = db.rawQuery(
+                "SELECT record_id FROM parkingRecord WHERE vehicle_id = ? AND exit_timestamp IS NULL LIMIT 1",
+                new String[]{String.valueOf(vehicleId)}
+        )) {
+            return cursor.moveToFirst();
+        }
+    }
+
     private void confirmarEliminarVehiculo(int position, AlertDialog editDialogPadre) {
         if (position < 0 || position >= idsVehiculos.size()) {
             return;
@@ -537,6 +546,16 @@ public class RegisterVehicleActivity extends AppCompatActivity {
 
         deleteDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             SQLiteDatabase db = databaseHelper.getWritableDatabase();
+            if (tieneParqueoActivo(db, vehicleId)) {
+                deleteDialog.dismiss();
+                Toast.makeText(
+                        this,
+                        "El vehículo tiene un parqueo activo; registra primero su salida para eliminarlo",
+                        Toast.LENGTH_LONG
+                ).show();
+                return;
+            }
+
             db.beginTransaction();
             try {
                 db.delete(
