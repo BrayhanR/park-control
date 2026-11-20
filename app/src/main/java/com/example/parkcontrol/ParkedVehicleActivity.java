@@ -44,6 +44,8 @@ import java.util.TimeZone;
 
 public class ParkedVehicleActivity extends AppCompatActivity {
 
+    private static final TimeZone ZONA_COLOMBIA = TimeZone.getTimeZone("America/Bogota");
+
     private DatabaseHelper dbHelper;
     private TextView txtEmptyState;
     private Spinner spinnerActiveVehicles;
@@ -396,6 +398,8 @@ public class ParkedVehicleActivity extends AppCompatActivity {
 
         try (Cursor c = db.rawQuery(sql, args)) {
             SimpleDateFormat formatoLocal = new SimpleDateFormat("dd/MM/yyyy - hh:mm a", Locale.getDefault());
+            formatoLocal.setTimeZone(ZONA_COLOMBIA);
+
             while (c.moveToNext()) {
                 ParqueoActivo p = new ParqueoActivo();
                 p.registroId = c.getInt(0);
@@ -492,9 +496,7 @@ public class ParkedVehicleActivity extends AppCompatActivity {
         for (String fmt : formatos) {
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat(fmt, Locale.getDefault());
-                if (fmt.startsWith("yyyy-MM-dd") && !fmt.contains("a")) {
-                    sdf.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
-                }
+                sdf.setTimeZone(ZONA_COLOMBIA);
                 Date d = sdf.parse(limpio);
                 if (d != null) {
                     return d.getTime();

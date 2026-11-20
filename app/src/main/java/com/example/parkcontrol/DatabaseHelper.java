@@ -1,13 +1,21 @@
 package com.example.parkcontrol;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "ParkControl.db";
-    private static final int DATABASE_VERSION = 2; // Incrementamos la versión para forzar la actualización
+    private static final int DATABASE_VERSION = 3; // Incrementamos versión para aplicar cambios si se recrea la BD
+    private static final TimeZone ZONA_COLOMBIA = TimeZone.getTimeZone("America/Bogota");
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -59,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "vehicle_id INTEGER NOT NULL, " +
                 "slot_id INTEGER NOT NULL, " +
                 "user_id INTEGER NOT NULL, " +
-                "entry_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                "entry_timestamp DATETIME, " +
                 "exit_timestamp DATETIME, " +
                 "total_fee REAL, " +
                 "parking_address TEXT, " +
@@ -108,7 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String obtenerEstadoEspacio(String numeroEspacio) {
         SQLiteDatabase db = getReadableDatabase();
 
-        try (android.database.Cursor cursor = db.rawQuery(
+        try (Cursor cursor = db.rawQuery(
                 "SELECT status FROM parkingSlot WHERE slot_number = ?",
                 new String[]{numeroEspacio}
         )) {
@@ -134,9 +142,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             parametros = new String[]{estado};
         }
 
-        try (android.database.Cursor cursor =
-                     db.rawQuery(consulta, parametros)) {
-
+        try (Cursor cursor = db.rawQuery(consulta, parametros)) {
             if (cursor.moveToFirst()) {
                 return cursor.getInt(0);
             }
@@ -145,7 +151,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return 0;
     }
 
-    public android.database.Cursor obtenerVehiculosDelUsuario(int userId) {
+    public Cursor obtenerVehiculosDelUsuario(int userId) {
         SQLiteDatabase db = getReadableDatabase();
 
         return db.rawQuery(
@@ -168,7 +174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int slotId;
 
             // Verificar que el espacio esté disponible
-            try (android.database.Cursor cursor = db.rawQuery(
+            try (Cursor cursor = db.rawQuery(
                     "SELECT slot_id FROM parkingSlot " +
                             "WHERE slot_number = ? AND status = ?",
                     new String[]{numeroEspacio, "disponible"})) {
@@ -181,7 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             // Verificar que el vehículo pertenezca al usuario
-            try (android.database.Cursor cursor = db.rawQuery(
+            try (Cursor cursor = db.rawQuery(
                     "SELECT vehicle_id FROM Vehicle " +
                             "WHERE vehicle_id = ? AND user_id = ?",
                     new String[]{
@@ -195,7 +201,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             // Evitar que el mismo vehículo tenga dos ingresos activos
-            try (android.database.Cursor cursor = db.rawQuery(
+            try (Cursor cursor = db.rawQuery(
                     "SELECT record_id FROM parkingRecord " +
                             "WHERE vehicle_id = ? AND exit_timestamp IS NULL",
                     new String[]{String.valueOf(vehicleId)})) {
@@ -205,13 +211,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
             }
 
-            // Guardar el ingreso
-            android.content.ContentValues datos =
-                    new android.content.ContentValues();
+            SimpleDateFormat sdfColombia = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            sdfColombia.setTimeZone(ZONA_COLOMBIA);
+            String horaColombia = sdfColombia.format(new Date());
 
+            // Guardar el ingreso con hora local de Colombia
+            ContentValues datos = new ContentValues();
             datos.put("vehicle_id", vehicleId);
             datos.put("slot_id", slotId);
             datos.put("user_id", userId);
+            datos.put("entry_timestamp", horaColombia);
 
             long registro = db.insert("parkingRecord", null, datos);
 
@@ -220,9 +229,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
             // Marcar el espacio como ocupado
-            android.content.ContentValues estado =
-                    new android.content.ContentValues();
-
+            ContentValues estado = new ContentValues();
             estado.put("status", "ocupado");
 
             int actualizados = db.update(
@@ -240,13 +247,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
 
         } catch (Exception e) {
-            android.util.Log.e("DatabaseHelper",
-                    "Error al registrar ingreso", e);
+            android.util.Log.e("DatabaseHelper", "Error al registrar ingreso", e);
             return false;
 
         } finally {
             db.endTransaction();
         }
     }
-
 }
