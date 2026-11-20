@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F9FC">
@@ -9,16 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
 
         <!-- ENCABEZADO -->
-
-
-        <!-- BIENVENIDA -->
-
-
-        <!-- FILA 1 -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -32,7 +24,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily=""
                 android:text="ParkControl"
                 android:textColor="@color/white"
                 android:textSize="23sp"
@@ -46,8 +37,9 @@
 
         </LinearLayout>
 
+        <!-- BIENVENIDA -->
         <LinearLayout
-            android:layout_width="381dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@color/white"
@@ -82,6 +74,7 @@
 
         </LinearLayout>
 
+        <!-- FILA 1 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,10 +88,10 @@
                 android:layout_height="125dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Mis vehículos"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:backgroundTint="@color/primary_blue"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnDisponibilidad"
@@ -106,33 +99,20 @@
                 android:layout_height="125dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Disponibilidad"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                android:backgroundTint="@color/primary_blue"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
-
         <!-- FILA 2 -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingStart="12dp"
             android:paddingEnd="12dp">
-
-            <Button
-                android:id="@+id/btnIngreso"
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:text="Registrar ingreso"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:backgroundTint="@color/primary_blue" />
 
             <Button
                 android:id="@+id/btnParqueos"
@@ -140,16 +120,25 @@
                 android:layout_height="125dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Mis parqueos"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:backgroundTint="@color/primary_blue"/>
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnHistorial"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/primary_blue"
+                android:text="Historial"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
-
         <!-- FILA 3 -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,31 +147,21 @@
             android:paddingEnd="12dp">
 
             <Button
-                android:id="@+id/btnHistorial"
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:text="Historial"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:backgroundTint="@color/primary_blue" />
-
-            <Button
                 android:id="@+id/btnPerfil"
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="110dp"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
+                android:backgroundTint="@color/primary_blue"
                 android:text="Mi perfil"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:backgroundTint="@color/primary_blue" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
+        <!-- LOGO -->
         <LinearLayout
-            android:layout_width="381dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@color/white"
@@ -194,13 +173,11 @@
                 android:id="@+id/imgParkControlLogo"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_marginBottom="12dp"
-                android:contentDescription="Ilustración de parqueadero"
+                android:contentDescription="Logo de ParkControl"
                 android:scaleType="fitCenter"
                 android:src="@drawable/parkcontrol" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 

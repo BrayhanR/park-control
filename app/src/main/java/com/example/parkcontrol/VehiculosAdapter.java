@@ -1,4 +1,3 @@
-
 package com.example.parkcontrol;
 
 import android.view.LayoutInflater;
@@ -36,11 +35,16 @@ public class VehiculosAdapter extends RecyclerView.Adapter<VehiculosAdapter.Vehi
 
         String[] vehiculo = vehiculos.get(position);
 
-        holder.tvId.setText(vehiculo[0]);
-        holder.tvPlaca.setText(vehiculo[1]);
-        holder.tvTipo.setText(vehiculo[2]);
-        holder.tvMarca.setText(vehiculo[3]);
-        holder.tvColor.setText(vehiculo[4]);
+        // Ocultar el ID
+        holder.tvId.setVisibility(View.GONE);
+
+        // Si viene con 5 elementos [id, placa, tipo, marca, color], desplazamos el índice
+        int offset = (vehiculo.length >= 5) ? 1 : 0;
+
+        holder.tvPlaca.setText(vehiculo.length > offset ? vehiculo[offset] : "");
+        holder.tvTipo.setText(vehiculo.length > offset + 1 ? vehiculo[offset + 1] : "");
+        holder.tvMarca.setText(vehiculo.length > offset + 2 ? vehiculo[offset + 2] : "");
+        holder.tvColor.setText(vehiculo.length > offset + 3 ? vehiculo[offset + 3] : "");
     }
 
     @Override

@@ -1,0 +1,114 @@
+[33m4969e9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32malbert[m[33m, [m[1;31morigin/fase4-sqlite-albert[m[33m, [m[1;32mfase4-sqlite-albert[m[33m)[m HEAD@{0}: pull origin fase4-sqlite-albert: Fast-forward
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{1}: checkout: moving from fase4-sqlite-albert to albert
+[33m4969e9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32malbert[m[33m, [m[1;31morigin/fase4-sqlite-albert[m[33m, [m[1;32mfase4-sqlite-albert[m[33m)[m HEAD@{2}: pull origin fase4-sqlite-albert: Fast-forward
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{3}: checkout: moving from main to fase4-sqlite-albert
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{4}: checkout: moving from santiago to main
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{5}: pull origin main: Fast-forward
+[33m479dbb6[m HEAD@{6}: checkout: moving from brayhan to santiago
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{7}: Branch: renamed refs/heads/brayhan to refs/heads/brayhan
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{9}: checkout: moving from Brayhan to brayhan
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{10}: pull origin main: Fast-forward
+[33m8591000[m HEAD@{11}: checkout: moving from andres to Brayhan
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{12}: pull origin main: Fast-forward
+[33me1fbffe[m HEAD@{13}: checkout: moving from albert to andres
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{14}: pull origin main: Fast-forward
+[33m14a3bc5[m HEAD@{15}: checkout: moving from main to albert
+[33mc793270[m[33m ([m[1;31morigin/santiago[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/brayhan[m[33m, [m[1;31morigin/andres[m[33m, [m[1;31morigin/albert[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32msantiago[m[33m, [m[1;32mrespaldo-main[m[33m, [m[1;32mmain[m[33m, [m[1;32mbrayhan[m[33m, [m[1;32mandres[m[33m)[m HEAD@{16}: commit: Actualización de base de datos con 3 filas adicionales
+[33mfe83ef8[m HEAD@{17}: commit: Comentario
+[33mac44006[m HEAD@{18}: commit: Comentario
+[33m66a275b[m HEAD@{19}: commit: Implementación y correccion de intents
+[33me577d9d[m HEAD@{20}: commit: Merge de las otras ramas en main
+[33m43d134e[m HEAD@{21}: merge albert: Merge made by the 'ort' strategy.
+[33m0daec04[m HEAD@{22}: merge andres: Merge made by the 'ort' strategy.
+[33m8591000[m HEAD@{23}: merge brayhan: Fast-forward
+[33m479dbb6[m HEAD@{24}: checkout: moving from respaldo-main to main
+[33m479dbb6[m HEAD@{25}: checkout: moving from main to respaldo-main
+[33m479dbb6[m HEAD@{26}: checkout: moving from andres to main
+[33me1fbffe[m HEAD@{27}: pull origin andres: Fast-forward
+[33m479dbb6[m HEAD@{28}: checkout: moving from albert to andres
+[33m14a3bc5[m HEAD@{29}: pull origin albert: Fast-forward
+[33m479dbb6[m HEAD@{30}: checkout: moving from brayhan to albert
+[33m8591000[m HEAD@{31}: commit: Activity VehicleHistory Completa
+[33m26e3d33[m HEAD@{32}: commit: Intent para agregar foto de perfil
+[33m70aa1e9[m HEAD@{33}: commit: Creación de las dos activities adicionales
+[33m479dbb6[m HEAD@{34}: checkout: moving from respaldo-main to brayhan
+[33m479dbb6[m HEAD@{35}: pull origin main: Fast-forward
+[33mf093660[m HEAD@{36}: checkout: moving from albert to respaldo-main
+[33m479dbb6[m HEAD@{37}: pull: Fast-forward
+[33m9b55d86[m HEAD@{38}: checkout: moving from santiago to albert
+[33m479dbb6[m HEAD@{39}: checkout: moving from brayhan to santiago
+[33m479dbb6[m HEAD@{40}: checkout: moving from andres to brayhan
+[33m479dbb6[m HEAD@{41}: pull: Fast-forward
+[33m619343b[m HEAD@{42}: checkout: moving from albert to andres
+[33m9b55d86[m HEAD@{43}: checkout: moving from santiago to albert
+[33m479dbb6[m HEAD@{44}: pull origin main: Fast-forward
+[33mefe046a[m HEAD@{45}: checkout: moving from brayhan to santiago
+[33m479dbb6[m HEAD@{46}: pull: Fast-forward
+[33m848c9ed[m HEAD@{47}: checkout: moving from main to brayhan
+[33m479dbb6[m HEAD@{48}: commit: Alineacion
+[33m704c200[m HEAD@{49}: commit: Configuracion GPS
+[33m44a418d[m HEAD@{50}: commit: Color de activity
+[33m910d408[m HEAD@{51}: commit: Cambio de color principal
+[33mf093660[m HEAD@{52}: commit: Estandarizacion de colores
+[33mce93168[m HEAD@{53}: pull origin main: Fast-forward
+[33m93f4e6e[m HEAD@{54}: checkout: moving from santiago to main
+[33mefe046a[m HEAD@{55}: commit: Rediseño de activities
+[33m705f99f[m HEAD@{56}: checkout: moving from andres to santiago
+[33m619343b[m HEAD@{57}: checkout: moving from santiago to andres
+[33m705f99f[m HEAD@{58}: commit (merge): Pull de base da datos desde main
+[33m3810097[m HEAD@{59}: pull origin santiago: Fast-forward
+[33m2113795[m HEAD@{60}: checkout: moving from brayhan to santiago
+[33m848c9ed[m HEAD@{61}: commit: Listener para RegisterExistActivity
+[33mc4c40c6[m HEAD@{62}: checkout: moving from santiago to brayhan
+[33m2113795[m HEAD@{63}: checkout: moving from brayhan to santiago
+[33mc4c40c6[m HEAD@{64}: commit: Segunda activity
+[33m4375783[m HEAD@{65}: commit: Primer activity completada
+[33m3b7ca71[m HEAD@{66}: checkout: moving from andres to brayhan
+[33m619343b[m HEAD@{67}: checkout: moving from brayhan to andres
+[33m3b7ca71[m HEAD@{68}: checkout: moving from albert to brayhan
+[33m9b55d86[m HEAD@{69}: checkout: moving from brayhan to albert
+[33m3b7ca71[m HEAD@{70}: checkout: moving from andres to brayhan
+[33m619343b[m HEAD@{71}: pull: Fast-forward
+[33m2113795[m HEAD@{72}: checkout: moving from brayhan to andres
+[33m3b7ca71[m HEAD@{73}: checkout: moving from albert to brayhan
+[33m9b55d86[m HEAD@{74}: checkout: moving from brayhan to albert
+[33m3b7ca71[m HEAD@{75}: commit: Cambios
+[33m77c5ea2[m HEAD@{76}: checkout: moving from main to brayhan
+[33m93f4e6e[m HEAD@{77}: checkout: moving from brayhan to main
+[33m77c5ea2[m HEAD@{78}: checkout: moving from main to brayhan
+[33m93f4e6e[m HEAD@{79}: commit: Limpieza de main, dejando MainActivity y DatabaseHelper
+[33mbdeea00[m HEAD@{80}: pull origin main: Fast-forward
+[33m2113795[m HEAD@{81}: checkout: moving from andres to main
+[33m2113795[m HEAD@{82}: checkout: moving from andres to andres
+[33m2113795[m HEAD@{83}: checkout: moving from brayhan to andres
+[33m77c5ea2[m HEAD@{84}: checkout: moving from andres to brayhan
+[33m2113795[m HEAD@{85}: checkout: moving from brayhan to andres
+[33m77c5ea2[m HEAD@{86}: checkout: moving from albert to brayhan
+[33m9b55d86[m HEAD@{87}: checkout: moving from brayhan to albert
+[33m77c5ea2[m HEAD@{88}: pull origin main: Merge made by the 'ort' strategy.
+[33mcae31b1[m HEAD@{89}: commit: Prueba de actualizacion 2
+[33m33dc45a[m HEAD@{90}: commit: Prueba de actualizacion
+[33m5c45296[m HEAD@{91}: commit: Base de datos y esquema SQLite
+[33m2a352d7[m HEAD@{92}: commit: Base de datos y esquema SQLite
+[33m8a24dbc[m HEAD@{93}: checkout: moving from albert to brayhan
+[33m9b55d86[m HEAD@{94}: checkout: moving from santiago to albert
+[33m2113795[m HEAD@{95}: checkout: moving from santiago to santiago
+[33m2113795[m HEAD@{96}: checkout: moving from albert to santiago
+[33m9b55d86[m HEAD@{97}: checkout: moving from andres to albert
+[33m2113795[m HEAD@{98}: checkout: moving from brayhan to andres
+[33m8a24dbc[m HEAD@{99}: checkout: moving from albert to brayhan
+[33m9b55d86[m HEAD@{100}: pull: Fast-forward
+[33m2113795[m HEAD@{101}: checkout: moving from brayhan to albert
+[33m8a24dbc[m HEAD@{102}: pull: Fast-forward
+[33me093a67[m HEAD@{103}: commit: Cambios grandle
+[33m2113795[m HEAD@{104}: checkout: moving from main to brayhan
+[33m2113795[m HEAD@{105}: checkout: moving from brayhan to main
+[33m2113795[m HEAD@{106}: checkout: moving from main to brayhan
+[33m2113795[m HEAD@{107}: checkout: moving from albert to main
+[33m2113795[m HEAD@{108}: checkout: moving from main to albert
+[33m2113795[m HEAD@{109}: checkout: moving from andres to main
+[33m2113795[m HEAD@{110}: checkout: moving from main to andres
+[33m2113795[m HEAD@{111}: checkout: moving from santiago to main
+[33m2113795[m HEAD@{112}: checkout: moving from main to santiago
+[33m2113795[m HEAD@{113}: commit: Cambio de documentacion
+[33m69ae87a[m HEAD@{114}: commit (initial): Base project

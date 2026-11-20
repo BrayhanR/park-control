@@ -141,9 +141,26 @@
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="@color/primary_blue"
             android:text="GUARDAR VEHÍCULO"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <!-- EDITAR / ELIMINAR VEHÍCULO -->
+
+        <Button
+            android:id="@+id/btnEditarVehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#37474F"
+            android:text="EDITAR / ELIMINAR VEHÍCULO"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

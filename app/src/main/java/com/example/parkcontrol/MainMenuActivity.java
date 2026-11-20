@@ -3,7 +3,6 @@ package com.example.parkcontrol;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +10,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private Button btnVehiculos;
     private Button btnDisponibilidad;
-    private Button btnIngreso;
     private Button btnParqueos;
     private Button btnHistorial;
     private Button btnPerfil;
@@ -25,59 +23,52 @@ public class MainMenuActivity extends AppCompatActivity {
         // Referencias a los botones
         btnVehiculos = findViewById(R.id.btnVehiculos);
         btnDisponibilidad = findViewById(R.id.btnDisponibilidad);
-        btnIngreso = findViewById(R.id.btnIngreso);
         btnParqueos = findViewById(R.id.btnParqueos);
         btnHistorial = findViewById(R.id.btnHistorial);
         btnPerfil = findViewById(R.id.btnPerfil);
 
         // Botón Mis vehículos
         btnVehiculos.setOnClickListener(v -> {
-
             Intent intent = new Intent(
                     MainMenuActivity.this,
                     RegisterVehicleActivity.class
             );
-
             startActivity(intent);
         });
 
-        // Botones que desarrollaremos posteriormente
-
+        // Botón Disponibilidad de espacios
         btnDisponibilidad.setOnClickListener(v -> {
-
             Intent intent = new Intent(
                     MainMenuActivity.this,
                     SpacesAvailabilityActivity.class
             );
-
             startActivity(intent);
         });
 
-        btnIngreso.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    MainMenuActivity.this,
-                    RegisterEntryActivity.class
-            );
-
-            startActivity(intent);
-        });
-
+        // Botón Mis parqueos
         btnParqueos.setOnClickListener(v -> {
             Intent intent = new Intent(
                     MainMenuActivity.this,
                     ParkedVehicleActivity.class
             );
-
             startActivity(intent);
         });
 
+        // Botón Historial
         btnHistorial.setOnClickListener(v -> {
-            Intent intent = new Intent(MainMenuActivity.this, VehicleHistoryActivity.class);
+            Intent intent = new Intent(
+                    MainMenuActivity.this,
+                    VehicleHistoryActivity.class
+            );
             startActivity(intent);
         });
 
+        // Botón Mi perfil
         btnPerfil.setOnClickListener(v -> {
-            Intent intent = new Intent(MainMenuActivity.this, MyProfileActivity.class);
+            Intent intent = new Intent(
+                    MainMenuActivity.this,
+                    MyProfileActivity.class
+            );
             startActivity(intent);
         });
     }
