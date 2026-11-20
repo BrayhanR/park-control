@@ -536,8 +536,15 @@ public class RegisterVehicleActivity extends AppCompatActivity {
         deleteDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(v -> deleteDialog.dismiss());
 
         deleteDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            SQLiteDatabase db = databaseHelper.getWritableDatabase();
+            db.beginTransaction();
             try {
-                SQLiteDatabase db = databaseHelper.getWritableDatabase();
+                db.delete(
+                        "parkingRecord",
+                        "vehicle_id = ?",
+                        new String[]{String.valueOf(vehicleId)}
+                );
+
                 int eliminadas = db.delete(
                         "Vehicle",
                         "vehicle_id = ?",
@@ -545,6 +552,7 @@ public class RegisterVehicleActivity extends AppCompatActivity {
                 );
 
                 if (eliminadas > 0) {
+                    db.setTransactionSuccessful();
                     deleteDialog.dismiss();
                     if (editDialogPadre != null && editDialogPadre.isShowing()) {
                         editDialogPadre.dismiss();
@@ -557,8 +565,11 @@ public class RegisterVehicleActivity extends AppCompatActivity {
                     Toast.makeText(this, "No se pudo eliminar el vehículo", Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
+                android.util.Log.e("RegisterVehicleActivity", "Error al eliminar vehículo", e);
                 deleteDialog.dismiss();
-                Toast.makeText(this, "No se puede eliminar si tiene registros de parqueo asociados", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No se pudo eliminar el vehículo", Toast.LENGTH_LONG).show();
+            } finally {
+                db.endTransaction();
             }
         });
     }
