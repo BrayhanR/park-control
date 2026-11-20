@@ -2,8 +2,8 @@ package com.example.parkcontrol;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,23 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SpacesAvailabilityActivity extends AppCompatActivity {
+
+    private static final String[][] SLOTS = {
+            {"01"}, {"02"}, {"03"}, {"04"},
+            {"05"}, {"06"}, {"07"}, {"08"},
+            {"09"}, {"10"}, {"11"}, {"12"}
+    };
+
+    private static final int[] SLOT_VIEW_IDS = {
+            R.id.slot01, R.id.slot02, R.id.slot03, R.id.slot04,
+            R.id.slot05, R.id.slot06, R.id.slot07, R.id.slot08,
+            R.id.slot09, R.id.slot10, R.id.slot11, R.id.slot12
+    };
+
     private DatabaseHelper dbHelper;
+    private TextView txtDisponibles;
+    private TextView txtOcupados;
+    private TextView txtTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +39,59 @@ public class SpacesAvailabilityActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         dbHelper.inicializarEspacios();
 
-        TextView txtDisponibles = findViewById(R.id.txtDisponibles);
-        TextView txtOcupados = findViewById(R.id.txtOcupados);
-        TextView txtTotal = findViewById(R.id.txtTotal);
+        txtDisponibles = findViewById(R.id.txtDisponibles);
+        txtOcupados = findViewById(R.id.txtOcupados);
+        txtTotal = findViewById(R.id.txtTotal);
 
+        TextView btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        configurarClicksEspacios();
+        actualizarPantalla();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (dbHelper != null) {
+            actualizarPantalla();
+        }
+    }
+
+    private void configurarClicksEspacios() {
+        for (int i = 0; i < SLOT_VIEW_IDS.length; i++) {
+            final String numeroEspacio = SLOTS[i][0];
+            TextView espacio = findViewById(SLOT_VIEW_IDS[i]);
+
+            espacio.setOnClickListener(v -> {
+                String estadoActual = dbHelper.obtenerEstadoEspacio(numeroEspacio);
+
+                if (!"disponible".equalsIgnoreCase(estadoActual)) {
+                    Toast.makeText(
+                            this,
+                            "Este espacio no está disponible",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    return;
+                }
+
+                Intent intent = new Intent(
+                        SpacesAvailabilityActivity.this,
+                        RegisterEntryActivity.class
+                );
+                intent.putExtra("selected_space", numeroEspacio);
+                startActivity(intent);
+            });
+        }
+    }
+
+    private void actualizarPantalla() {
         int disponibles = dbHelper.contarEspacios("disponible");
         int ocupados = dbHelper.contarEspacios("ocupado");
         int total = dbHelper.contarEspacios(null);
@@ -35,82 +100,14 @@ public class SpacesAvailabilityActivity extends AppCompatActivity {
         txtOcupados.setText(String.valueOf(ocupados));
         txtTotal.setText(String.valueOf(total));
 
-
-
-        // Flecha para volver a Menu
-        TextView btnBack = findViewById(R.id.btnBack);
-
-        btnBack.setOnClickListener(v -> finish());
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(
-                    WindowInsetsCompat.Type.systemBars()
-            );
-
-            v.setPadding(
-                    systemBars.left,
-                    systemBars.top,
-                    systemBars.right,
-                    systemBars.bottom
-            );
-
-            return insets;
-        });
-
-        configurarEspacio(R.id.slot01, "01");
-        configurarEspacio(R.id.slot02, "02");
-        configurarEspacio(R.id.slot03, "03");
-        configurarEspacio(R.id.slot04, "04");
-        configurarEspacio(R.id.slot05, "05");
-        configurarEspacio(R.id.slot06, "06");
-        configurarEspacio(R.id.slot07, "07");
-        configurarEspacio(R.id.slot08, "08");
-        configurarEspacio(R.id.slot09, "09");
-        configurarEspacio(R.id.slot10, "10");
-        configurarEspacio(R.id.slot11, "11");
-        configurarEspacio(R.id.slot12, "12");
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (dbHelper == null) {
-            return;
+        for (int i = 0; i < SLOT_VIEW_IDS.length; i++) {
+            String numeroEspacio = SLOTS[i][0];
+            TextView espacio = findViewById(SLOT_VIEW_IDS[i]);
+            actualizarAparienciaEspacio(espacio, numeroEspacio);
         }
-
-        TextView disponibles = findViewById(R.id.txtDisponibles);
-        TextView ocupados = findViewById(R.id.txtOcupados);
-        TextView total = findViewById(R.id.txtTotal);
-
-        disponibles.setText(String.valueOf(
-                dbHelper.contarEspacios("disponible")));
-
-        ocupados.setText(String.valueOf(
-                dbHelper.contarEspacios("ocupado")));
-
-        total.setText(String.valueOf(
-                dbHelper.contarEspacios(null)));
-
-        configurarEspacio(R.id.slot01, "01");
-        configurarEspacio(R.id.slot02, "02");
-        configurarEspacio(R.id.slot03, "03");
-        configurarEspacio(R.id.slot04, "04");
-        configurarEspacio(R.id.slot05, "05");
-        configurarEspacio(R.id.slot06, "06");
-        configurarEspacio(R.id.slot07, "07");
-        configurarEspacio(R.id.slot08, "08");
-        configurarEspacio(R.id.slot09, "09");
-        configurarEspacio(R.id.slot10, "10");
-        configurarEspacio(R.id.slot11, "11");
-        configurarEspacio(R.id.slot12, "12");
     }
 
-    private void configurarEspacio(int idVista, String numeroEspacio) {
-
-        TextView espacio = findViewById(idVista);
-
+    private void actualizarAparienciaEspacio(TextView espacio, String numeroEspacio) {
         String estado = dbHelper.obtenerEstadoEspacio(numeroEspacio);
         boolean disponible = "disponible".equalsIgnoreCase(estado);
 
@@ -123,28 +120,5 @@ public class SpacesAvailabilityActivity extends AppCompatActivity {
             espacio.setBackgroundResource(R.color.grey_selection);
             espacio.setTextColor(getColor(R.color.grey_selection_text));
         }
-
-        espacio.setOnClickListener(v -> {
-
-            String estadoActual = dbHelper.obtenerEstadoEspacio(numeroEspacio);
-
-            if (!"disponible".equalsIgnoreCase(estadoActual)) {
-                android.widget.Toast.makeText(
-                        this,
-                        "Este espacio no está disponible",
-                        android.widget.Toast.LENGTH_SHORT
-                ).show();
-                return;
-            }
-
-            Intent intent = new Intent(
-                    SpacesAvailabilityActivity.this,
-                    RegisterEntryActivity.class
-            );
-
-            intent.putExtra("selected_space", numeroEspacio);
-            startActivity(intent);
-        });
     }
-
 }

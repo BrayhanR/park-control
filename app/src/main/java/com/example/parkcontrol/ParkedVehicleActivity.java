@@ -493,7 +493,7 @@ public class ParkedVehicleActivity extends AppCompatActivity {
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat(fmt, Locale.getDefault());
                 if (fmt.startsWith("yyyy-MM-dd") && !fmt.contains("a")) {
-                    sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    sdf.setTimeZone(TimeZone.getTimeZone("America/Bogota"));
                 }
                 Date d = sdf.parse(limpio);
                 if (d != null) {
